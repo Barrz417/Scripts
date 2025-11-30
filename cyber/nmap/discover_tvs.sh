@@ -17,8 +17,22 @@ add_script "ssdp-discover"           # SSDP (Roku, Fire TVs, Sony TVs)
 add_script "upnp-info"               # UPnP / DLNA Universal Plug n' Play
 add_script "x11-access"              # x11 remote desktop server
 
+# -- Scripts --
+PORTS="80"     # HTTP
+PORTS+=",1900" # SSDP/UPnP (Roku, LG, Fire TV, Samsung)
+PORTS+=",3000" # LG smart TV http service
+PORTS+=",3001" # LG smart TV http service
+PORTS+=",3702" # WS-Discovery (Sony / Samsung)
+PORTS+=",5353" # mDNS / Chromecast
+PORTS+=",7000" # AirTunes rtspd
+PORTS+=",8008" # Chromecast HTTP/HTTPS API
+PORTS+=",8009" # Chromecast HTTP/HTTPS API
+PORTS+=",8060" # Roku ECP
+PORTS+=",8443" # Smart TV HTTPS APIs
+PORTS+=",8612" # Roku SSDP alt
+PORTS+=",9080" # glrpc
+
 # -- RUN COMMAND --
-PORTS="53,67,68,80,443,1900,3702,5353,8008,8009,8060,8443"
 set -x
 nmap -sS -sU -T4 --top-ports 50 \
   --open \
